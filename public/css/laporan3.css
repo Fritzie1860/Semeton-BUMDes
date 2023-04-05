@@ -1,0 +1,53 @@
+P {
+  margin-bottom: 3px;
+}
+
+table {
+  width: 100%;
+  margin-top: -15;
+  border-collapse: collapse;
+
+}
+
+td {
+  border: 1px solid black;
+}
+
+tr {
+  text-align: center;
+  max-height: 30px;
+  height: 5px;
+}
+
+h3 {
+  float: left;
+  font-size: 12;
+  font-weight: lighter;
+  /* margin-bottom: auto; */
+}
+
+@page {
+  size: auto;
+  margin: 5mm;
+}
+
+/* Kop Surat */
+.kop {
+  border-bottom: 5px solid black;
+}
+
+.rangkasurat {
+  width: 980px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+}
+
+.tengah {
+  text-align: center;
+}
+
+/* isi */
+.isi {
+  text-align: center;
+}
