@@ -65,7 +65,10 @@
                                                 action="{{ route('bumdes.update', ['bumde' => 1]) }}">
                                                 @method('put')
                                                 @csrf
+<<<<<<< HEAD
                                                 {{-- @foreach ($data as $item) --}}
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
                                                 <input type="hidden" name="old_nama" value="{{ $bumdes->nama }}">
                                                 <input type="hidden" name="old_alamat" value="{{ $bumdes->alamat }}">
@@ -95,7 +98,10 @@
                                                         class="btn btn-primary waves-effect waves-light">Simpan Data
                                                         Profil</button>
                                                 </div>
+<<<<<<< HEAD
                                                 {{-- @endforeach --}}
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                             </form>
                                         </div>
                                     </div>
@@ -107,15 +113,25 @@
                 </div>
             </div>
             <div class="row">
+<<<<<<< HEAD
                 {{-- {{dd($Tab == "jasa")}} --}}
                 <ul class="nav nav-tabs navtab-bg nav-justified">
                     <li class="">
+=======
+                @php $Tab = 'jasa'; @endphp
+                <ul class="nav nav-tabs navtab-bg nav-justified">
+                    <li class="{{ $Tab == 'jasa' ? 'active' : '' }}">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         <a href="#home1" data-toggle="tab" aria-expanded="false">
                             <span class="visible-xs"><i class="fa fa-shopping-basket"></i></span>
                             <span class="hidden-xs">Usaha Jasa</span>
                         </a>
                     </li>
+<<<<<<< HEAD
                     <li class="">
+=======
+                    <li class="{{ $Tab == 'dagang' ? 'active' : '' }}">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         <a href="#profile1" data-toggle="tab" aria-expanded="true">
                             <span class="visible-xs"><i class="fa fa-group"></i></span>
                             <span class="hidden-xs">Usaha Dagang</span>
@@ -125,7 +141,11 @@
 
                 <!-- Tab Content -->
                 <div class="tab-content">
+<<<<<<< HEAD
                     <div class="tab-pane" id="home1">
+=======
+                    <div class="tab-pane {{ $Tab == 'jasa' ? 'active' : '' }}" id="home1">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Data Usaha Jasa</h3>
@@ -199,7 +219,11 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="tab-pane" id="profile1">
+=======
+                    <div class="tab-pane {{ $Tab == 'dagang' ? 'active' : '' }}" id="profile1">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Data Usaha Dagang</h3>

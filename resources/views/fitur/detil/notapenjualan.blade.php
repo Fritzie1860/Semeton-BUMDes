@@ -18,6 +18,18 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
             <div class="row">
                 <div class="col-md-12">
@@ -93,6 +105,7 @@
 
 
                                         <tbody>
+<<<<<<< HEAD
 
 
                                             {{-- @isset($data[$loc]['nota'])
@@ -130,6 +143,48 @@
                                                 @endforeach
                                             @endisset --}}
 
+=======
+                                            @foreach ($transaksi->jualbeli as $item)
+                                                <tr>
+                                                    <td>
+                                                        <div class="conbtn">
+                                                            {{ $loop->iteration }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        {{-- {{ $data == null ? 'kosong' : $listbarang[$item['barang']]['nama'] }} --}}
+                                                        {{ $item->barang->nama }}
+                                                    </td>
+                                                    <td>
+                                                        {{-- {{ $data == null ? 'kosong' : $item['harga'] }} --}}
+                                                        {{ $harga = $item->barang->harga + $item->barang->untung }}
+                                                    </td>
+                                                    <td>
+                                                        {{-- {{ $data == null ? 'kosong' : $item['jumlah'] }} --}}
+                                                        {{ $item->kuantitas }}
+                                                    </td>
+                                                    <td>
+                                                        {{ ($item->barang->harga + $item->barang->untung) * $item->kuantitas }}
+                                                    </td>
+                                                    <td>
+                                                        <div class="conbtn">
+                                                            <button class="btn btn-primary center fa fa-edit"
+                                                                data-toggle="modal" data-target="#edit"
+                                                                onclick="edit_data('{{ Route('jualbeli.update', ['jualbeli' => $item->id]) }}', '{{ $item->barang->nama }}', '{{ $harga }}', '{{ $item->kuantitas }}', '{{ $item->barang->stok }}')"></button>
+
+                                                            <form method="POST"
+                                                                action="{{ route('jualbeli.destroy', ['jualbeli' => $item->id]) }}"
+                                                                class="form-horizontal" role="form">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button class="btn btn-danger center fa fa-trash"
+                                                                    style="margin-left: 2%"></button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                         </tbody>
                                     </table>
                                 </div>
@@ -144,14 +199,23 @@
                                     <div class="col-md-5">
                                         <input id="totaltr" name="totaltransaksi" data-parsley-type="number"
                                             type="text" disabled="disabled" class="form-control" placeholder="0"
+<<<<<<< HEAD
                                             value="" required>
+=======
+                                            value="{{ $transaksi->jualbeli->sum('total') }}" required>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     </div>
                                 </div>
                                 <div class="col-md-8 m-t-5">
                                     <label class="col-md-3 control-label">Dibayarkan</label>
                                     <div class="col-md-5">
+<<<<<<< HEAD
                                         <input id="totalbyr" data-parsley-type="number" type="text" class="form-control"
                                             placeholder="Total Pelanggan Membayar" required>
+=======
+                                        <input id="totalbyr" data-parsley-type="number" type="text"
+                                            class="form-control" placeholder="Total Pelanggan Membayar" required>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     </div>
 
                                     <button class="btn btn-primary center m-l-5" style="display: inline;"
@@ -161,6 +225,7 @@
                             <div style="width: 50%;">
                                 <hr style="border-color: black;">
                             </div>
+<<<<<<< HEAD
 
 
 
@@ -173,6 +238,26 @@
 
                                 <button class="btn btn-primary center m-l-5" style="display: inline;"
                                     data-target="#bayar" onclick="">Simpan</button>
+=======
+                            <div class="col-md-8">
+                                <form action="{{ route('hutang.store') }}" method="post" class="form-horizontal"
+                                    role="form">
+                                    @csrf
+
+                                    <input type="hidden" name="id_transaksi" value="{{ $transaksi->id }}">
+                                    <input type="hidden" name="bayar" id="bayar" value="" required>
+
+                                    <label class="col-md-3 control-label">Sisa </label>
+                                    <div class="col-md-5">
+                                        <input name="sisa" id="hasil" data-parsley-type="number" type="text"
+                                            class="form-control" placeholder="0"
+                                            value="{{ $transaksi->hutang->last()->sisa ?? 0 }}" required readonly>
+                                    </div>
+
+                                    <button class="btn btn-primary center m-l-5" style="display: inline;"
+                                        data-target="#bayar" onclick="">Simpan</button>
+                                </form>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
 
                         </div>
@@ -198,6 +283,7 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('jualbeli.store') }}" class="form-horizontal" role="form">
                         @csrf
+<<<<<<< HEAD
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Nama/Jenis Barang</label>
                             <div class="col-sm-8">
@@ -209,12 +295,31 @@
                                     @endforeach --}}
                                 </select>
 
+=======
+
+                        <input type="hidden" name="id_transaksi" value="{{ $transaksi->id }}">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Nama/Jenis Barang</label>
+                            <div class="col-sm-8">
+                                <select name="id_barang" class="form-control" required>
+                                    @foreach ($barang as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}
+                                            ({{ $item->harga + $item->untung }})
+                                            (stok: {{ $item->stok }})
+                                        </option>
+                                    @endforeach
+                                </select>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Jumlah</label>
                             <div class="col-md-8">
+<<<<<<< HEAD
                                 <input name="jumlah" data-parsley-type="number" type="text" class="form-control"
+=======
+                                <input name="kuantitas" data-parsley-type="number" type="text" class="form-control"
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     placeholder="Jumlah Barang" required>
                             </div>
                         </div>
@@ -246,6 +351,7 @@
                         @method('put')
                         @csrf
 
+<<<<<<< HEAD
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Nama/Jenis Barang</label>
                             <div class="col-sm-8">
@@ -257,12 +363,25 @@
                                     @endforeach --}}
                                 </select>
 
+=======
+                        <input type="hidden" id="edit_harga" name="harga">
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Nama/Jenis Barang</label>
+                            <div class="col-sm-8">
+                                <input id="edit_barang" data-parsley-type="number" type="text" class="form-control"
+                                    placeholder="Nama Barang" required disabled>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Jumlah</label>
                             <div class="col-md-8">
+<<<<<<< HEAD
                                 <input id="edit_jumlah" name="jumlah" data-parsley-type="number" type="text"
+=======
+                                <input id="edit_jumlah" name="kuantitas" data-parsley-type="number" type="text"
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     class="form-control" placeholder="Jumlah Barang" required>
                             </div>
                         </div>
@@ -286,6 +405,7 @@
         function bayar() {
             totaltr = document.getElementById("totaltr").value;
             totalbyr = document.getElementById("totalbyr").value;
+<<<<<<< HEAD
             document.getElementById("hasil").value = totalbyr - totaltr;
         }
 
@@ -294,6 +414,17 @@
             document.getElementById("edit_id").value = id;
             document.getElementById("edit_barang").value = data['barang'];
             document.getElementById("edit_jumlah").value = data['jumlah'];
+=======
+            document.getElementById("bayar").value = totalbyr;
+            document.getElementById("hasil").value = totalbyr - totaltr;
+        }
+
+        function edit_data(url, barang, harga, kuantitas, stok) {
+            document.getElementById("edit_url").action = url;
+            document.getElementById("edit_barang").value = barang + ' (stok: ' + stok + ')';
+            document.getElementById("edit_jumlah").value = kuantitas;
+            document.getElementById("edit_harga").value = harga;
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
         }
     </script>
 @endsection

@@ -18,14 +18,14 @@ class Barang extends Model
         'minimum' => 0,
         'harga' => 0,
         'untung' => 0,
-        'status' => null
+        'status' => 'Barang Dagangan'
     ];
 
     public function orang() {
         return $this->belongsToMany(Orang::class, 'barangorangs', 'id_barang', 'id_orang');
     }
 
-    
+
     public function jualbeli()
     {
         return $this->hasMany(Jualbeli::class, 'id_barang');

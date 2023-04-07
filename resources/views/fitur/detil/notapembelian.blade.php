@@ -272,6 +272,7 @@
                         @csrf
 
                         <div class="form-group">
+<<<<<<< HEAD
                             <label class="col-sm-4 control-label">Jenis Usaha Jasa</label>
                             <div class="col-sm-8">
                                 <select id="edit_jenis" class="form-control" required disabled>
@@ -279,6 +280,12 @@
                                         <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </select>
+=======
+                            <label class="col-sm-4 control-label">Jenis/Nama Barang</label>
+                            <div class="col-sm-8">
+                                <input id="edit_jenis" data-parsley-type="number" type="text" class="form-control"
+                                    placeholder="Nama Barang" id="edit_harga" required disabled>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
                         </div>
 
@@ -323,6 +330,7 @@
 
         function edit_data(url, barang, harga, kuantitas) {
             document.getElementById("edit_url").action = url;
+<<<<<<< HEAD
             document.getElementById("edit_jumlah").value = kuantitas;
             document.getElementById("edit_harga").value = harga;
             var selbarang = document.getElementById("edit_jenis");
@@ -336,6 +344,11 @@
                     return;
                 }
             }
+=======
+            document.getElementById("edit_jenis").value = barang;
+            document.getElementById("edit_jumlah").value = kuantitas;
+            document.getElementById("edit_harga").value = harga;
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
         }
     </script>
 @endsection

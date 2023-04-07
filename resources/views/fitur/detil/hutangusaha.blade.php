@@ -18,6 +18,18 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
             <div class="row">
                 <div class="col-md-12">
@@ -46,7 +58,12 @@
                                                         <label class="control-label">Hutang</label>
                                                         <div class="">
                                                             <input type="text" name="tanggal" class="form-control"
+<<<<<<< HEAD
                                                                 disabled="disabled" value="{{ $transaksi->hutang }}">
+=======
+                                                                disabled="disabled"
+                                                                value="{{ $transaksi->hutang->last()->sisa }}">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                                         </div>
                                                     </div>
                                                 </form>
@@ -92,7 +109,11 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
+<<<<<<< HEAD
                             <h3 class="panel-title"> Riwayat Hutang</h3>
+=======
+                            <h3 class="panel-title">Riwayat Hutang</h3>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
                         </div>
 
@@ -103,7 +124,10 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center;">No</th>
+<<<<<<< HEAD
                                         <th style="text-align: center;">No Transaksi</th>
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                         <th style="text-align: center;">Tanggal Transaksi</th>
                                         <th style="text-align: center;">Total Transaksi</th>
                                         <th style="text-align: center;">Hutang</th>
@@ -113,6 +137,7 @@
 
 
                                 <tbody>
+<<<<<<< HEAD
 
                                     <tr>
                                         <td style="text-align: center;">1</td>
@@ -124,6 +149,17 @@
                                     </tr>
 
 
+=======
+                                    @foreach ($transaksi->hutang as $item)
+                                        <tr>
+                                            <td style="text-align: center;">{{ $loop->iteration }}</td>
+                                            <td style="text-align: center;">{{ $item->created_at }}</td>
+                                            <td style="text-align: center;">{{ $item->bayar }}</td>
+                                            <td style="text-align: center;">{{ $item->sisa }}</td>
+                                            {{-- <td style="text-align: center;"><Button class="btn btn-primary">Bayar</Button></td> --}}
+                                        </tr>
+                                    @endforeach
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                 </tbody>
                             </table>
                         </div>
@@ -144,18 +180,34 @@
                     <h4 class="modal-title" id="myModalLabel">Pembayaran</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label class="col-md-2 control-label">Jumlah</label>
                             <div class="col-md-10">
                                 <input name="kode" data-parsley-type="number" type="text" class="form-control"
+=======
+                    <form action="{{ route('hutang.store') }}" method="post" class="form-horizontal" role="form">
+                        @csrf
+
+                        <input type="hidden" name="id_transaksi" value="{{ $transaksi->id }}">
+                        <input type="hidden" name="sisa_bayar" value="{{ $transaksi->hutang->last()->sisa }}">
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Jumlah</label>
+                            <div class="col-md-10">
+                                <input name="bayar" data-parsley-type="number" type="text" class="form-control"
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     placeholder="Jumlah" data-parsley-maxlength="8" required />
                             </div>
                         </div>
 
 
                         <div class="modal-footer">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             <button type="button" class="btn btn-default waves-effect"
                                 data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
