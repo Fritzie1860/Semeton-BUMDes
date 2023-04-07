@@ -14,6 +14,13 @@ class TransaksiController extends Controller
 
     public function index()
     {
+        // dd(request('t'));
+        
+            // return view('fitur.penjualan', [
+            //     'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
+            //     'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+            //     'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+            // ]);
         switch (request('t')) {
             case 'jasa':
                 return view('fitur.pendapatan', [
@@ -39,6 +46,12 @@ class TransaksiController extends Controller
                     'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
                     'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
                 ]);
+            case 'transaksi':
+                 return view('fitur.pendapatan', [
+                'transaksi' => Transaksi::where('status', 'pendapatan')->latest()->get(),
+                'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                'usaha' => Usaha::where('jenis', 'jasa')->orderBy('nama')->get()
+            ]);
             default:
                 return view('fitur.pembelian', [
                     'transaksi' => Transaksi::where('status', 'pembelian')->latest()->get(),
@@ -55,12 +68,35 @@ class TransaksiController extends Controller
             'id_orang' =>'required',
             'id_usaha' => 'required',
             'keterangan' => 'nullable',
-            'gambar' => 'nullable',
+            'gambar' => 'required',
             'status' => 'required'
         ]);
 
-        Transaksi::create($validatedData);
+        if($request->gambar !=''){
+             // if($pengelola->file !='' && $pengelola->file != null){
+            //     $file_old= $path.$pengelola->file;
+            //     unlink($file_old);
+            // }
+            $path =public_path().'\images\upload\\';
+         
+           
 
+            // upload new file
+            $file=$request->gambar;
+            $filename=$file->getClientOriginalName();
+            $file->move($path, $filename);
+
+            $data=Transaksi::create([
+                'tanggal' => $request->tanggal,
+                'id_orang' =>$request->id_orang,
+                'id_usaha' => $request->id_usaha,
+                'keterangan' => $request->keterangan,
+                'gambar' => $filename,
+                'status' => $request->status
+            ]);
+        
+         
+        }
         return redirect()->back()->with('success', 'Data Transaksi berhasil ditambahkan.');
     }
 
@@ -76,7 +112,8 @@ class TransaksiController extends Controller
         else {
             return view('fitur.detil.notapenjualan', [
                 'transaksi' => $transaksi,
-                'barang' => Barang::whereNotIn('id', $transaksi->jualbeli->pluck('id_barang'))->orderBy('nama')->get(),
+                'barang' => $transaksi->orang->barang,
+                'penjualan' => $transaksi->pembelian
             ]);
         }
     }

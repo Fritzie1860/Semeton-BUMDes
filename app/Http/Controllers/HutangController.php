@@ -10,17 +10,22 @@ class HutangController extends Controller
 {
     public function index()
     {
+        $transaksi = Transaksi::with('hutang')->where('status', 'pembelian')->whereHas('hutang', function($q) { $q->where('sisa', '<', 0); })->latest()->get();
+
+        dd($transaksi);
         return view('fitur.datahutang', [
-            'pelanggan' => Transaksi::where('status', 'penjualan')->whereDoesntHave('hutang', function($q){ $q->where('sisa', 0); })->latest()->get(),
-            'bumdes' => Transaksi::where('status', 'pembelian')->whereDoesntHave('hutang', function($q){ $q->where('sisa', 0); })->latest()->get()
+            'pelanggan' => Transaksi::where('status', 'penjualan')->latest()->get(),
+            'bumdes' => Transaksi::where('status', 'pembelian')->whereHas('hutang', function($q) { $q->where('sisa', '<', 0); })->latest()->get()
         ]);
     }
 
     public function store(Request $request)
     {
-        $rule = [
+        // dd($request);
+        $validatedData = $request->validate([
             'id_transaksi' => 'required',
             'bayar' => 'required',
+<<<<<<< HEAD
         ];
 
         if(!$request->sisa_bayar) {
@@ -47,12 +52,16 @@ class HutangController extends Controller
                 }
             }
         }
+=======
+            'sisa' => 'required',
+        ]);
+>>>>>>> b41aef2b8418a0521a503b8aa67d58e48671ab99
 
         Hutang::create($validatedData);
         return redirect()->back();
     }
 
-    public function show(Transaksi $hutang)
+    public function edit(Transaksi $hutang)
     {
         return view('fitur.detil.hutangusaha', [
             'transaksi' => $hutang

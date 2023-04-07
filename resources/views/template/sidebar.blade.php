@@ -49,13 +49,16 @@
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-group"></i> <span> Jasa</span>
                         <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                     <ul class="list-unstyled">
-<<<<<<< HEAD
+
                         <li><a href="">Transaksi Jasa</a></li>
                         <li><a href="">Beban</a></li>
-=======
+
+                        <li><a href="{{ route('transaksi.index') . '?t=transaksi' }}">Transaksi Jasa</a></li>
+                        <li><a href="{{ route('transaksi.index') . '?t=beban' }}">Beban</a></li>
+
                         <li><a href="{{ route('transaksi.index') . '?t=jasa' }}">Transaksi Jasa</a></li>
                         <li><a href="{{ route('transaksi.index') . '?t=bebanjasa' }}">Beban</a></li>
->>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
+
                     </ul>
                 </li>
 
@@ -65,11 +68,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('transaksi.index') . '?t=pembelian' }}">Pembelian</a></li>
                         <li><a href="{{ route('transaksi.index') . '?t=penjualan' }}">Penjualan</a></li>
-<<<<<<< HEAD
-                        <li><a href="">Beban</a></li>
-=======
                         <li><a href="{{ route('transaksi.index') . '?t=bebandagang' }}">Beban</a></li>
->>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                     </ul>
                 </li>
 

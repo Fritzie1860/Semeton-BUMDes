@@ -17,4 +17,8 @@ class Usaha extends Model
     {
         return $this->hasMany(Transaksi::class);
     }
+    public function pendapatan()
+    {
+        return $this->hasMany(Pendapatan::class,'id_usaha');
+    }
 }
