@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Jualbeli;
 use Illuminate\Http\Request;
 
@@ -9,12 +10,23 @@ class JualbeliController extends Controller
 {
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        // dd($request);
+        $rule = [
             'id_transaksi' => 'required',
             'id_barang' => 'required',
-            'harga' => 'required',
             'kuantitas' =>'required',
-        ]);
+        ];
+
+        if(isset($request['harga'])) {
+            $rule['harga'] = 'required';
+        }
+
+        $validatedData = $request->validate($rule);
+
+        if(!isset($request->harga)) {
+            $barang = Barang::firstWhere('id', $request->id_barang);
+            $validatedData['harga'] = $barang->harga + $barang->untung;
+        }
 
         $validatedData['total'] = $validatedData['harga'] * $validatedData['kuantitas'];
 

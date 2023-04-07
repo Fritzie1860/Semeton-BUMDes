@@ -48,7 +48,11 @@
 
 
                                         <tbody>
+<<<<<<< HEAD
                                             @foreach ($data as $item)
+=======
+                                            {{-- @foreach ($data as $item)
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                                 <tr>
                                                     <td>
                                                         <div class="conbtn">
@@ -67,6 +71,7 @@
                                                     </td>
                                                     <td>
                                                         {{ $data == [] ? 'kosong' : $item['bebandagang'] }}
+<<<<<<< HEAD
                                                         {{-- {{"Rp200,000"}} --}}
                                                     </td>
                                                     <td>
@@ -95,6 +100,36 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+=======
+                                                        {{-- {{"Rp200,000"}} --}
+                                            </td>
+                                            <td>
+                                                {{-- {{$data ==[] ? 'kosong' : $item['penghasilan']}} --}
+                                                <div class="conbtn">
+                                                    <img src="images/{{ $item['file'] }}" alt="nota"
+                                                        onclick="edit('images/{{ $item['file'] }}',{{ $loop->index }})"
+                                                        data-toggle="modal" data-target="#gambar"
+                                                        style="width: 30px; height: 30px;">
+                                                </div>
+
+                                                {{-- {{"Rp200,000"}} --}
+                                            </td>
+                                            <td>
+                                                <div class="conbtn">
+                                                    <button class="btn btn-primary center fa fa-edit" data-toggle="modal"
+                                                        data-target="#edit"
+                                                        onclick='edit_data(@json($item),{{ $loop->index }})'></button>
+                                                    <button class="btn btn-danger center fa fa-trash"
+                                                        style="margin-left: 2%"></button>
+                                                    <button class="btn btn-success center mdi mdi-eye"
+                                                        style="margin-left: 2%"
+                                                        onclick="window.location.href='{{ route('get.notabebandagang') }}?id={{ $loop->index }}'">
+                                                        Detail</button>
+                                                </div>
+                                            </td>
+                                            </tr>
+                                            @endforeach --}}
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                         </tbody>
                                     </table>
 
@@ -120,7 +155,11 @@
                     <h4 class="modal-title" id="myModalLabel">Tambah Transaksi</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <form action="{{ route('post.bebandagang') }}" method="POST" class="form-horizontal" role="form"
+=======
+                    <form action="" method="POST" class="form-horizontal" role="form"
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -140,7 +179,11 @@
                             <div class="col-md-8">
                                 {{-- <input name="namabeban" type="text" class="form-control"
                                     placeholder="Nama Transaksi Beban (contoh: Beban Operasional)" required> --}}
+<<<<<<< HEAD
                                     {{-- <select name="klasifikasi" class="form-control" required>
+=======
+                                {{-- <select name="klasifikasi" class="form-control" required>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                         <option value="ATK">ATK</option>
                                         <option value="Biaya kantor">Biaya kantor</option>
                                         <option value="Honor pengurus dan karyawan">Honor pengurus dan karyawan</option>
@@ -149,6 +192,7 @@
                                         <option value="Lainnya">Lainnya</option>  
                                     </select> --}}
 
+<<<<<<< HEAD
                                     <select name="klasifikasi" class="form-control" required>
                                         <option value="Operasional">Operasional - ATK</option>
                                         <option value="Operasional">Operasional - Biaya Kantor </option>
@@ -161,6 +205,20 @@
                                         <option value="Non operasional">Non operasional - Biaya operasional lainnya</option>
                                     </select>
                             </div>
+=======
+                                <select name="klasifikasi" class="form-control" required>
+                                    <option value="Operasional">Operasional - ATK</option>
+                                    <option value="Operasional">Operasional - Biaya Kantor</option>
+                                    <option value="Operasional">Operasional - Honor pengurus dan karyawan</option>
+                                    <option value="Operasional">Operasional - Biaya penyusutan inventaris</option>
+                                    <option value="Operasional">Operasional - Operasional badan pengawas dan penasehat
+                                    </option>
+                                    <option value="Operasional">Operasional - Lainnya</option>
+                                    <option value="Non operasional">Non operasional - Pajak bunga bank</option>
+                                    <option value="Non operasional">Non operasional - Administrasi bank</option>
+                                    <option value="Non operasional">Non operasional - Biaya operasional lainnya</option>
+                                </select>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
                         </div>
 
@@ -176,7 +234,11 @@
                             <label class="col-md-4 control-label">Bukti Transaksi</label>
                             <div class="col-md-8">
                                 <input class="form-control" name="file" type="file" id="file"
+<<<<<<< HEAD
                                 onchange="validateFile()" required />
+=======
+                                    onchange="validateFile()" required />
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             </div>
                         </div>
 
@@ -203,8 +265,13 @@
                     <h4 class="modal-title" id="myModalLabel">Edit Transaksi Beban Dagang</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <form action="{{ route('post.editbebandagang') }}" method="POST" class="form-horizontal"
                         role="form" enctype="multipart/form-data">
+=======
+                    <form action="" method="POST" class="form-horizontal" role="form"
+                        enctype="multipart/form-data">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         @csrf
                         <input type="hidden" name="id" id="edit_id">
                         <div class="form-group">
@@ -258,8 +325,13 @@
                     <h4 class="modal-title" id="myModalLabel">Bukti Transaksi</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <form action="{{ route('post.bebandagang') }}" method="POST" class="form-horizontal"
                         role="form" enctype="multipart/form-data">
+=======
+                    <form action="" method="POST" class="form-horizontal" role="form"
+                        enctype="multipart/form-data">
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                         @csrf
                         <div class="conbtn">
                             <img src="" alt="nota" id="gambar_src" style="width: 80%;">
@@ -273,7 +345,11 @@
                             <div class="col-md-10">
                                 <div class="input-group ">
                                     <input name="file" type="file" class="form-control" id="file"
+<<<<<<< HEAD
                                     onchange="validateFile()" required>
+=======
+                                        onchange="validateFile()" required>
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     <span class="input-group-addon bg-custom b-0"><i
                                             class="mdi mdi-calendar text-white"></i></span>
                                 </div><!-- input-group -->

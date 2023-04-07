@@ -12,7 +12,11 @@ class Transaksi extends Model
     protected $guarded = [
         'id'
     ];
- 
+
+    protected $attributes = [
+        'keterangan' => null,
+        'gambar' => null,
+    ];
 
     public function orang()
     {

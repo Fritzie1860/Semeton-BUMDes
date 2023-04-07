@@ -15,33 +15,49 @@ class TransaksiController extends Controller
     public function index()
     {
         // dd(request('t'));
-        if(request('t') == 'pembelian') {
-            return view('fitur.pembelian', [
-                'transaksi' => Transaksi::where('status', 'pembelian')->latest()->get(),
-                'pemasok' => Orang::where('status', 'pemasok')->orderBy('nama')->get(),
-                'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
-            ]);
-        }
-        elseif(request('t') == 'penjualan') {
-            return view('fitur.penjualan', [
-                'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
-                'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
-                'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
-            ]);
-        }
-        elseif(request('t') == 'transaksi') {
-            return view('fitur.pendapatan', [
-                'transaksi' => Transaksi::where('status', 'pendapatan')->latest()->get(),
-                'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
-                'usaha' => Usaha::where('jenis', 'jasa')->orderBy('nama')->get()
-            ]);
-        }
-        else {
+        
             // return view('fitur.penjualan', [
             //     'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
             //     'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
             //     'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
             // ]);
+        switch (request('t')) {
+            case 'jasa':
+                return view('fitur.pendapatan', [
+                    // 'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
+                    // 'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                    // 'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+                ]);
+            case 'bebanjasa':
+                return view('fitur.bebanjasa', [
+                    // 'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
+                    // 'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                    // 'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+                ]);
+            case 'bebandagang':
+                return view('fitur.bebandagang', [
+                    // 'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
+                    // 'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                    // 'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+                ]);
+            case 'penjualan':
+                return view('fitur.penjualan', [
+                    'transaksi' => Transaksi::where('status', 'penjualan')->latest()->get(),
+                    'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                    'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+                ]);
+            case 'transaksi':
+                 return view('fitur.pendapatan', [
+                'transaksi' => Transaksi::where('status', 'pendapatan')->latest()->get(),
+                'pelanggan' => Orang::where('status', 'pelanggan')->orderBy('nama')->get(),
+                'usaha' => Usaha::where('jenis', 'jasa')->orderBy('nama')->get()
+            ]);
+            default:
+                return view('fitur.pembelian', [
+                    'transaksi' => Transaksi::where('status', 'pembelian')->latest()->get(),
+                    'pemasok' => Orang::where('status', 'pemasok')->orderBy('nama')->get(),
+                    'usaha' => Usaha::where('jenis', 'dagang')->orderBy('nama')->get()
+                ]);
         }
     }
 

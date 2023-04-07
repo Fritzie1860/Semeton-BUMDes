@@ -19,7 +19,10 @@ use App\Http\Controllers\BarangorangController;
 use App\Http\Controllers\HutangController;
 use App\Http\Controllers\ProfilBumdesController;
 use App\Http\Controllers\ProfilPengelolaController;
+<<<<<<< HEAD
 use App\Http\Controllers\PendapatanController;
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +65,11 @@ Route::resource('/barang', BarangController::class)->except(['create', 'edit']);
 Route::resource('/barangorang', BarangorangController::class)->only(['store', 'update', 'destroy']);
 Route::resource('/jualbeli', JualbeliController::class)->only(['store', 'update', 'destroy']);
 Route::resource('/transaksi', TransaksiController::class)->except(['create', 'edit']);
+<<<<<<< HEAD
 Route::resource('/pendapatan', PendapatanController::class);
 
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
 // Route::group(['middleware' => ['auth']], function () {
 // });

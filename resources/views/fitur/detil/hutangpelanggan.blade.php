@@ -231,18 +231,34 @@
                     <h4 class="modal-title" id="myModalLabel">Pembayaran</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label class="col-md-2 control-label">Jumlah</label>
                             <div class="col-md-10">
                                 <input name="kode" data-parsley-type="number" type="text" class="form-control"
+=======
+                    <form action="{{ route('hutang.store') }}" method="post" class="form-horizontal" role="form">
+                        @csrf
+
+                        <input type="hidden" name="id_transaksi" value="{{ $transaksi->id }}">
+                        <input type="hidden" name="sisa_bayar" value="{{ $transaksi->hutang->last()->sisa }}">
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Jumlah</label>
+                            <div class="col-md-10">
+                                <input name="bayar" data-parsley-type="number" type="text" class="form-control"
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                     placeholder="Jumlah" data-parsley-maxlength="8" required />
                             </div>
                         </div>
 
 
                         <div class="modal-footer">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                             <button type="button" class="btn btn-default waves-effect"
                                 data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
