@@ -131,6 +131,20 @@ class TransaksiController extends Controller
 
         return redirect()->back()->with('success', 'Data Transaksi berhasil diupdate.');
     }
+    // public function updatejasa(Request $request)
+    // {
+    //     dd("test");
+    //     $validatedData = $request->validate([
+    //         'tanggal' => 'required',
+    //         'id_orang' =>'required',
+    //         'id_usaha' => 'required',
+    //         'keterangan' => 'nullable'
+    //     ]);
+
+    //     Transaksi::where('id', $request->id)->update($validatedData);
+
+    //     return redirect()->back()->with('success', 'Data Transaksi berhasil diupdate.');
+    // }
 
     public function destroy(Transaksi $transaksi)
     {

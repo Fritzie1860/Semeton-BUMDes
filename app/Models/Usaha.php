@@ -19,6 +19,6 @@ class Usaha extends Model
     }
     public function pendapatan()
     {
-        return $this->hasMany(Pendapatan::class,'id_usaha');
+        return $this->hasMany(Pendapatan::class,'id_usaha','id');
     }
 }

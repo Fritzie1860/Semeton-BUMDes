@@ -22,6 +22,10 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Orang::class, 'id_orang');
     }
+    public function jasa()
+    {
+        return $this->hasMany(Jasa::class, 'id_transaksi');
+    }
 
     public function usaha()
     {

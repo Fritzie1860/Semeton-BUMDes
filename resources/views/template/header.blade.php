@@ -65,14 +65,14 @@
                     </li>
                     <li class="dropdown">
 
-                        {{-- <a href="" class="dropdown-toggle profile waves-effect waves-light"
+                   <a href="" class="dropdown-toggle profile waves-effect waves-light"
                             data-toggle="dropdown" aria-expanded="true"><img
-                                src="/images/upload/{{ Auth::user()->foto }}" alt="user-img" class="img-circle" /></a> --}}
+                                src="/images/upload/{{ Auth::user()->foto }}" alt="user-img" class="img-circle" /></a> 
 
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('profilpengelola') }}" class="dropdown-item"> Profile</a></li>
                             <li class="divider"></li>
-                            <!--  -->
+                       
                             <form action="/logout" method="post">
                                 @csrf
                                 <button type="submit"class="btn" and
@@ -80,9 +80,10 @@
                                     <li><a style="color: red " class="dropdown-item">Keluar</a></li>
                                 </button>
                             </form>
-                            <!--  -->
+                           
                         </ul>
                     </li>
+                    
                 </ul>
             </div>
             <!--/.nav-collapse -->

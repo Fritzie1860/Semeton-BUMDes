@@ -14,6 +14,9 @@ class Pendapatan extends Model
     ];
 
     public function usaha(){
-        return $this->belongsTo(Usaha::class, 'id_usaha'); // 1 
+        return $this->belongsTo(Usaha::class, 'id_usaha','id'); // 1 
+    } 
+    public function jasa(){
+        return $this->hasMany(Jasa::class, 'id_pendapatan'); // n
     } 
 }

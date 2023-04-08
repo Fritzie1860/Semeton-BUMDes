@@ -20,6 +20,7 @@ use App\Http\Controllers\HutangController;
 use App\Http\Controllers\ProfilBumdesController;
 use App\Http\Controllers\ProfilPengelolaController;
 use App\Http\Controllers\PendapatanController;
+use App\Http\Controllers\JasaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'Master Data', 'middleware' => ['auth','Role:Ketua,Ben
 Route::get('/', function () { return redirect()->route('login'); });
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 Route::get('/dashboard', function () {
@@ -63,7 +64,5 @@ Route::resource('/barangorang', BarangorangController::class)->only(['store', 'u
 Route::resource('/jualbeli', JualbeliController::class)->only(['store', 'update', 'destroy']);
 Route::resource('/transaksi', TransaksiController::class)->except(['create', 'edit']);
 Route::resource('/pendapatan', PendapatanController::class);
-
-
-// Route::group(['middleware' => ['auth']], function () {
-// });
+Route::get('/detail/{id}', [JasaController::class,'index']);
+Route::resource('/detail', JasaController::class)->except(['create', 'show', 'edit']);

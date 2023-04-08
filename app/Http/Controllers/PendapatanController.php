@@ -17,6 +17,6 @@ class PendapatanController extends Controller
             'jenis_pendapatan' => $request->jenis
         ]);
       
-        return back();
+        return back(); 
     }
 }
