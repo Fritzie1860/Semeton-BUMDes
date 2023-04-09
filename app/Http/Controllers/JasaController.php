@@ -11,7 +11,9 @@ class JasaController extends Controller
     public function index($id){
         $transaksi=Transaksi::find($id);
         $jasa=Jasa::All();
-        return view('fitur.detil.notapendapatan',compact('transaksi','jasa'));
+        $sum=Jasa::All()->sum('total');
+        // dd($jasa);
+        return view('fitur.detil.notapendapatan',compact('transaksi','jasa','sum'));
     }
     public function store(Request $request){
         $rule = [

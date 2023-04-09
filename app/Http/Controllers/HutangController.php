@@ -12,7 +12,7 @@ class HutangController extends Controller
     {
         $transaksi = Transaksi::with('hutang')->where('status', 'pembelian')->whereHas('hutang', function($q) { $q->where('sisa', '<', 0); })->latest()->get();
 
-        dd($transaksi);
+        // dd($transaksi);
         return view('fitur.datahutang', [
             'pelanggan' => Transaksi::where('status', 'penjualan')->latest()->get(),
             'bumdes' => Transaksi::where('status', 'pembelian')->whereHas('hutang', function($q) { $q->where('sisa', '<', 0); })->latest()->get()
@@ -25,8 +25,7 @@ class HutangController extends Controller
         $validatedData = $request->validate([
             'id_transaksi' => 'required',
             'bayar' => 'required',
-<<<<<<< HEAD
-        ];
+        ]);
 
         if(!$request->sisa_bayar) {
             $rule['sisa'] = 'required';
@@ -52,10 +51,6 @@ class HutangController extends Controller
                 }
             }
         }
-=======
-            'sisa' => 'required',
-        ]);
->>>>>>> b41aef2b8418a0521a503b8aa67d58e48671ab99
 
         Hutang::create($validatedData);
         return redirect()->back();

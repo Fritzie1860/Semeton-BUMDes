@@ -65,7 +65,6 @@
 
                                             <tbody>
 
-<<<<<<< HEAD
                                                 <tr>
                                                     <td>
                                                         <div class="conbtn">
@@ -107,36 +106,6 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-=======
-                                                @foreach ($pelanggan as $item)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="conbtn">
-                                                                {{ $loop->iteration }}
-                                                                1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            {{ $item->orang->nama }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $item->orang->alamat }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $item->hutang->last()->sisa }}
-                                                        </td>
-                                                        <td>
-                                                            <div class="conbtn">
-                                                                <button class="btn btn-primary center fa fa-edit"
-                                                                    data-toggle="modal" data-target="#editdagangs"
-                                                                    onclick="window.location.href='{{ route('hutang.show', ['hutang' => $item->id]) }}'"></button>
-                                                                {{-- <button class="btn btn-danger center fa fa-trash"
-                                                                    style="margin-left: 2%"></button> --}}
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
->>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
 
                                             </tbody>
                                         </table>
@@ -189,11 +158,7 @@
                                                             <div class="conbtn">
                                                                 <button class="btn btn-primary center fa fa-edit"
                                                                     data-toggle="modal" data-target="#editdagangs"
-<<<<<<< HEAD
                                                                     onclick="window.location.href='{{ route('hutang.edit', ['hutang' => $item->id]) }}'"></button>
-=======
-                                                                    onclick="window.location.href='{{ route('hutang.show', ['hutang' => $item->id]) }}'"></button>
->>>>>>> 4672e1bc9f215af5956cf02356c04364b2bdd3c0
                                                                 {{-- <button class="btn btn-danger center fa fa-trash"
                                                                     style="margin-left: 2%"></button> --}}
                                                             </div>

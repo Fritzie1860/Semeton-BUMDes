@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'alamat' => 'tidak tau dimana',
         ]);
 
-        Usaha::factory(10)->create();
-        Orang::factory(10)->create();
+        // Usaha::factory(10)->create();
+        // Orang::factory(10)->create();
     }
 }

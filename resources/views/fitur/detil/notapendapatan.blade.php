@@ -113,13 +113,16 @@
                                                            {{$item->kuantitas}}
                                                         </td>
                                                         <td>
-                                                            {{$total= $total+($item->harga*$item->kuantitas)}}
+                                                            {{$item->total}}
                                                         </td>
                                                         <td>
                                                             <div class="conbtn">
                                                                 <button class="btn btn-primary center fa fa-edit"
                                                                     data-toggle="modal" data-target="#edit"
-                                                                    onclick='edit_data(@json($item),{{ $loop->index }})'></button>
+                                                                    onclick="edit_data('{{$item->id}}','{{$item->pendapatan->jenis_pendapatan}}','{{$item->harga}}','{{$item->kuantitas}}')"></button>
+                                                                <form action="">
+
+                                                                </form>
                                                                 <button class="btn btn-danger center fa fa-trash"
                                                                     style="margin-left: 2%"></button>
                                                             </div>
@@ -140,7 +143,7 @@
                                     <div class="col-md-5">
                                         <input id="totaltr" name="totaltransaksi" data-parsley-type="number"
                                             type="text" disabled="disabled" class="form-control" placeholder="0"
-                                            value="" required>
+                                            value="{{$sum}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-8 m-t-5">
@@ -245,16 +248,19 @@
                     <h4 class="modal-title" id="myModalLabel">Edit Nota Transaksi Jasa</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST" class="form-horizontal"
+                    <form action="" method="POST" class="form-horizontal" id="url"
                         role="form" enctype="multipart/form-data">
+                        @method('put')
                         @csrf
                         <input type="hidden" name="id" id="edit_id">
 
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Jenis Usaha Jasa</label>
                             <div class="col-sm-8">
-                                <select id="edit_jenis" name="jenis" class="form-control" required>
-                                    
+                                <select id="" name="jenis" class="form-control" required>
+                                    @foreach($transaksi->usaha->pendapatan as $i)
+                                    <option value="" id="edit_jenis">{{$i->jenis_pendapatan}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -295,11 +301,12 @@
             document.getElementById("hasil").value = totalbyr - totaltr;
         }
 
-        function edit_data(data, id) {
+        function edit_data(id,jenis,harga,jumlah) {
+            console.log(jenis);
             document.getElementById("edit_id").value = id;
-            document.getElementById("edit_jenis").value = data['jenis'];
-            document.getElementById("edit_harga").value = data['harga'];
-            document.getElementById("edit_jumlah").value = data['jumlah'];
+            document.getElementById("edit_jenis").value = jenis;
+            document.getElementById("edit_harga").value = harga;
+            document.getElementById("edit_jumlah").value = jumlah;
         }
     </script>
 @endsection
